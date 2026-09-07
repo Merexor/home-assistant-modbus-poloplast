@@ -1,0 +1,38 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "poloplast-modbus"
+version = "1.0.0"
+description = "Python library for communicating with Poloplast ventilation units over Modbus."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+authors = [{ name = "Poloplast Modbus Contributors" }]
+keywords = ["modbus", "poloplast", "ventilation", "home-automation"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Topic :: Home Automation",
+    "License :: OSI Approved :: Apache Software License",
+]
+dependencies = ["modbus-connection>=4.8.1,<5"]
+
+[project.optional-dependencies]
+cli = ["modbus-connection[tmodbus]>=4.8.1,<5"]
+
+[project.urls]
+Homepage = "https://github.com/Tom-Bom-badil/poloplast-modbus"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/poloplast_modbus"]
+
+[tool.ruff]
+target-version = "py312"
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
